@@ -13,6 +13,7 @@ import com.unity3d.player.UnityPlayer;
 public class MainActivity {
 
 	public static String FindDevName;
+	public static String FindDevAddr;
 
 	private static BluetoothAdapter bluetoothAdapter;
 	private static UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -20,7 +21,12 @@ public class MainActivity {
 	private static BluetoothSocket btSocket = null;
 	private static BluetoothDevice btdev = null;
 
-	public static void DevName(final String name) {
+	
+	public static void SetDevAddr(final String addr) {
+		FindDevAddr = addr;
+	}	
+	
+	public static void SetDevName(final String name) {
 		FindDevName = name;
 	}
 
@@ -86,7 +92,7 @@ public class MainActivity {
 				
 				if (pairedDevices.size() > 0) 
 					for (BluetoothDevice device : pairedDevices) 
-						if (device.getName().equals(FindDevName)) 
+						if (device.getName().equals(FindDevName) && device.getAddress().equals(FindDevAddr) ) 
 							Toast.makeText(UnityPlayer.currentActivity, "Connect to" + device.getName() + " " + device.getAddress(), Toast.LENGTH_LONG).show();
 				
 			}
