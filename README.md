@@ -5,12 +5,13 @@ https://github.com/shinn716/BluetoothToArduino-Processing
   
 <img src="https://github.com/shinn716/AndroidBluetoothToArduino-Unity/blob/master/ezgif.com-optimize.gif" /></a>  
    
-Eclipse Export Jar...  
-<img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-33-23.png" /></a>  
 Unity use native AndroidBluetooth.jar...  
 <img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-34-16.png" /></a>  
 Type your bluetooth device name and address.   
-<img src="https://github.com/shinn716/AndroidBluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_14-47-19.png" /></a> 
+<img src="https://github.com/shinn716/AndroidBluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_14-47-19.png" /></a>  
+  
+jar (You can modified from MainActivity.java)  
+<img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-33-23.png" /></a>  
   
 Reference   
 ------------
