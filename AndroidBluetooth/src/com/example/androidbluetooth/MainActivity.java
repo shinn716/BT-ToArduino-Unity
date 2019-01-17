@@ -109,7 +109,7 @@ public class MainActivity {
 	}
 
 	public static void ShowSend(final String info) {
-		Toast.makeText(UnityPlayer.currentActivity, "Send " + info, Toast.LENGTH_LONG).show();
+		Toast.makeText(UnityPlayer.currentActivity, info, Toast.LENGTH_LONG).show();
 	}
 
 	public static void Connect(final String btAddress) {
