@@ -3,33 +3,24 @@ package com.example.androidbluetooth;
 import android.widget.Toast;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
-
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 import java.io.IOException;
-
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
 import com.unity3d.player.UnityPlayer;
 
 public class MainActivity {
 
 	public static String FindDevName;
-	
+
 	private static BluetoothAdapter bluetoothAdapter;
-	private static UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");	
+	private static UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 	private static OutputStream outStream = null;
 	private static BluetoothSocket btSocket = null;
 	private static BluetoothDevice btdev = null;
-	
-	
-	public static void DevName(final String name) {		
+
+	public static void DevName(final String name) {
 		FindDevName = name;
 	}
 
@@ -65,7 +56,7 @@ public class MainActivity {
 				}
 			}
 		});
-	}	
+	}
 
 	// Method必須為static
 	public static void showToast(final String content, final boolean isLong)// 傳入的參入必須為final，才可讓Runnable()內部使用
@@ -85,23 +76,19 @@ public class MainActivity {
 			@Override
 			public void run() {
 				bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-				if (bluetoothAdapter.isEnabled() == false) {
-					Toast.makeText(UnityPlayer.currentActivity, "TURN ON BLUETOOTH AND RESTART", Toast.LENGTH_LONG)
-							.show();
-				} else {
+				
+				if (bluetoothAdapter.isEnabled() == false)
+					Toast.makeText(UnityPlayer.currentActivity, "TURN ON BLUETOOTH AND RESTART", Toast.LENGTH_LONG).show();
+				else
 					Toast.makeText(UnityPlayer.currentActivity, "Welcome", Toast.LENGTH_LONG).show();
-				}
 
 				Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-				if (pairedDevices.size() > 0) {
-					for (BluetoothDevice device : pairedDevices) {
-						if (device.getName().equals(FindDevName)) {
-							Toast.makeText(UnityPlayer.currentActivity,
-									"Connect to" + device.getName() + " " + device.getAddress(), Toast.LENGTH_LONG)
-									.show();
-						}
-					}
-				}
+				
+				if (pairedDevices.size() > 0) 
+					for (BluetoothDevice device : pairedDevices) 
+						if (device.getName().equals(FindDevName)) 
+							Toast.makeText(UnityPlayer.currentActivity, "Connect to" + device.getName() + " " + device.getAddress(), Toast.LENGTH_LONG).show();
+				
 			}
 		});
 
@@ -121,8 +108,8 @@ public class MainActivity {
 
 	}
 
-	public static void ShowSend() {
-		Toast.makeText(UnityPlayer.currentActivity, "Send", Toast.LENGTH_LONG).show();
+	public static void ShowSend(final String info) {
+		Toast.makeText(UnityPlayer.currentActivity, "Send " + info, Toast.LENGTH_LONG).show();
 	}
 
 	public static void Connect(final String btAddress) {
