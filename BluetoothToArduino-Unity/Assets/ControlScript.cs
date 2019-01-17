@@ -45,12 +45,12 @@ public class ControlScript : MonoBehaviour
     public void Btn01Click()
     {
         byte[] senddata = new byte[] { (int)'q', 2 };
-        Send(senddata, "q");
+        Send(senddata, "Send: (byte) q");
     }
 
     public void Btn02Click()
     {
         byte[] senddata = new byte[] { (int)'w', 2 };
-        Send(senddata, "w");
+        Send(senddata, "Send: (byte) w");
     }
 }
