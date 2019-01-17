@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Bluetooth : AndroidBehaviour<Bluetooth>
@@ -8,6 +8,11 @@ public class Bluetooth : AndroidBehaviour<Bluetooth>
         //要呼叫的class所在的Package名稱.要呼叫的java class名稱
         get { return "com.example.androidbluetooth.MainActivity"; }
     }  
+
+    public static void DevName(string name)
+    {
+        instance.CallStatic("DevName", name);
+    }
 
     public static void openBT()
     {
