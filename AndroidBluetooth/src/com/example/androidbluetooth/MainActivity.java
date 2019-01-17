@@ -20,12 +20,18 @@ import com.unity3d.player.UnityPlayer;
 
 public class MainActivity {
 
-	private static BluetoothAdapter bluetoothAdapter;
-	private static UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+	public static String FindDevName;
 	
+	private static BluetoothAdapter bluetoothAdapter;
+	private static UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");	
 	private static OutputStream outStream = null;
 	private static BluetoothSocket btSocket = null;
 	private static BluetoothDevice btdev = null;
+	
+	
+	public static void DevName(final String name) {		
+		FindDevName = name;
+	}
 
 	public static BluetoothDevice Search() {
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -61,13 +67,13 @@ public class MainActivity {
 		});
 	}	
 
-	// Method¥²¶·¬°static
-	public static void showToast(final String content, final boolean isLong)// ¶Ç¤Jªº°Ñ¤J¥²¶·¬°final¡A¤~¥iÅıRunnable()¤º³¡¨Ï¥Î
+	// Methodå¿…é ˆç‚ºstatic
+	public static void showToast(final String content, final boolean isLong)// å‚³å…¥çš„åƒå…¥å¿…é ˆç‚ºfinalï¼Œæ‰å¯è®“Runnable()å…§éƒ¨ä½¿ç”¨
 	{
 		UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				// ­Y¨Ï¥ÎªÌ¶Ç¤Jªºboolean¬°true¡A«hToastÅã¥Ü3.5¬í¡F§_«h¬°2¬í
+				// è‹¥ä½¿ç”¨è€…å‚³å…¥çš„booleanç‚ºtrueï¼Œå‰‡Toasté¡¯ç¤º3.5ç§’ï¼›å¦å‰‡ç‚º2ç§’
 				Toast.makeText(UnityPlayer.currentActivity, content, isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT)
 						.show();
 			}
@@ -95,7 +101,7 @@ public class MainActivity {
 				Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
 				if (pairedDevices.size() > 0) {
 					for (BluetoothDevice device : pairedDevices) {
-						if (device.getName().equals("BluetoothV3")) {
+						if (device.getName().equals(FindDevName)) {
 							Toast.makeText(UnityPlayer.currentActivity,
 									"Connect to" + device.getName() + " " + device.getAddress(), Toast.LENGTH_LONG)
 									.show();
