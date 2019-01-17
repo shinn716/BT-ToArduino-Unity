@@ -1,5 +1,8 @@
 # BluetoothToArduino-Unity  
-  
+ 
+Previous..(Arduino code and Bt moudle, you can see from here.)  
+https://github.com/shinn716/BluetoothToArduino-Processing 
+   
 Eclipse Export Jar...  
 <img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-33-23.png" /></a>  
 Unity use native AndroidBluetooth.jar...  
