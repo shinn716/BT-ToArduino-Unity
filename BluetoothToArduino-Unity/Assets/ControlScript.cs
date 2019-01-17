@@ -9,9 +9,13 @@ public class ControlScript : MonoBehaviour
     public Text text_addr;
     public Text text_name;
 
-    private void Start()
+    private void Awake()
     {
         Bluetooth.DevName(WanttoFindDevName);
+    }
+
+    private void Start()
+    {  
         Bluetooth.openBT();
         Init();
     }
@@ -32,21 +36,21 @@ public class ControlScript : MonoBehaviour
         Bluetooth.Connect(address);
     }
 
-    private void Send(byte[] data)
+    private void Send(byte[] data, string info)
     {
         Bluetooth.Write(data);
-        Bluetooth.ShowSend();
+        Bluetooth.ShowSend(info);
     }
 
     public void Btn01Click()
     {
         byte[] senddata = new byte[] { (int)'q', 2 };
-        Send(senddata);
+        Send(senddata, "q");
     }
 
     public void Btn02Click()
     {
         byte[] senddata = new byte[] { (int)'w', 2 };
-        Send(senddata);
+        Send(senddata, "w");
     }
 }
