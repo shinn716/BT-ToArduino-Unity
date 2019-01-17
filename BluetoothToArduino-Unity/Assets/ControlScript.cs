@@ -1,28 +1,30 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(Bluetooth))]
 public class ControlScript : MonoBehaviour
 {
+    public string WanttoFindDevName = "BluetoothV3";
     public Text text_addr;
     public Text text_name;
 
     private void Start()
     {
+        Bluetooth.DevName(WanttoFindDevName);
         Bluetooth.openBT();
-        init();
+        Init();
     }
 
-    void init()
+    private void Init()
     {
         Bluetooth.findBT();
-        Invoke("ShowDevName", 2);
-
+        StartCoroutine(ShowDevName());
     }
 
-    void ShowDevName()
+    private IEnumerator ShowDevName()
     {
+        yield return new WaitForEndOfFrame();
         string address = Bluetooth.GetPairAddress();
         string name = Bluetooth.GetPairName();
         text_addr.text = address;
