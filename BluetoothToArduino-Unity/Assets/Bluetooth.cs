@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Bluetooth : AndroidBehaviour<Bluetooth>
 {
+    public string PackageName = "com.example.androidbluetooth.MainActivity";
+
     protected override string javaClassName
     {
         //要呼叫的class所在的Package名稱.要呼叫的java class名稱
-        get { return "com.example.androidbluetooth.MainActivity"; }
+        get { return PackageName; }
     }  
 
     public static void DevName(string name)
@@ -44,9 +46,9 @@ public class Bluetooth : AndroidBehaviour<Bluetooth>
         return instance.CallStatic<string>("GetPairName");
     }
 
-    public static void ShowSend()
+    public static void ShowSend(string info)
     {
-        instance.CallStatic("ShowSend");
+        instance.CallStatic("ShowSend", info);
     }
 
 }
