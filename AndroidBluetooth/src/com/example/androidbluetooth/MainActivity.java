@@ -89,13 +89,7 @@ public class MainActivity {
 					Toast.makeText(UnityPlayer.currentActivity, "TURN ON BLUETOOTH AND RESTART", Toast.LENGTH_LONG)
 							.show();
 				} else {
-
-//					String address = bluetoothAdapter.getAddress();
-//					String name = bluetoothAdapter.getName();
-//					Toast.makeText(UnityPlayer.currentActivity, address + name, Toast.LENGTH_LONG).show();
-
 					Toast.makeText(UnityPlayer.currentActivity, "Welcome", Toast.LENGTH_LONG).show();
-
 				}
 
 				Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
