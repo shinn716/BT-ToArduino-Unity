@@ -5,13 +5,18 @@ using System.Collections;
 [RequireComponent(typeof(Bluetooth))]
 public class ControlScript : MonoBehaviour
 {
-    public string WanttoFindDevName = "BluetoothV3";
+    [Header("Find Device name and address.")]
+    public string FindDevName = "BluetoothV3";
+    public string FindDevAddr = "98:D3:32:30:24:49";
+
+    [Space]
     public Text text_addr;
     public Text text_name;
 
     private void Awake()
     {
-        Bluetooth.DevName(WanttoFindDevName);
+        Bluetooth.SetDevName(FindDevName);
+        Bluetooth.SetDevAddr(FindDevAddr);
     }
 
     private void Start()
@@ -31,8 +36,13 @@ public class ControlScript : MonoBehaviour
         yield return new WaitForEndOfFrame();
         string address = Bluetooth.GetPairAddress();
         string name = Bluetooth.GetPairName();
-        text_addr.text = address;
-        text_name.text = name;
+
+        if(address!=null)
+            text_addr.text = address;
+
+        if(name!=null)
+            text_name.text = name;
+
         Bluetooth.Connect(address);
     }
 
