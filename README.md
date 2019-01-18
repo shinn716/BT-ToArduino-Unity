@@ -41,7 +41,7 @@ public static void ShowSend(string info)
 ...
 ```  
   
-jar (You can modified from MainActivity.java)  
+jar (You can modified jar from MainActivity.java)  
 <img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-33-23.png" /></a>  
   
 Reference   
