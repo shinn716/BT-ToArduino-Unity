@@ -20,9 +20,6 @@ public static void SetDevAddr(string addr)
 ...
 /// 強制開啟藍芽
 public static void openBT()
-...
-/// Close
-public static void closeBt()
  ...
 /// 搜尋藍芽裝置
 public static void findBT()
