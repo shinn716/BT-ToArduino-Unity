@@ -10,6 +10,40 @@ Unity use native AndroidBluetooth.jar...
 Type your bluetooth device name and address.   
 <img src="https://github.com/shinn716/AndroidBluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_14-47-19.png" /></a>  
   
+Bluetooth.cs  
+```  
+/// 設定要抓取藍芽裝置的名稱
+public static void SetDevName(string name)
+...
+/// 設定要抓取藍芽裝置的位址
+public static void SetDevAddr(string addr)
+...
+/// 強制開啟藍芽
+public static void openBT()
+...
+/// Close
+public static void closeBt()
+ ...
+/// 搜尋藍芽裝置
+public static void findBT()
+ ...
+/// 藍芽連線
+public static void Connect(string address)
+...
+/// 寫入訊號(byte), 專案用於Arduino Serial Read 'q', 'w', 'e'三種訊號
+public static void Write(byte[] bytes)
+...
+/// 抓取配對裝置的位址
+public static string GetPairAddress()
+...
+/// 抓取配對裝置的名稱
+public static string GetPairName()
+...
+/// 顯示 Toast, 可傳入自訂的字串
+public static void ShowSend(string info)
+...
+```  
+  
 jar (You can modified from MainActivity.java)  
 <img src="https://github.com/shinn716/BluetoothToArduino-Unity/blob/master/Snipaste_2019-01-17_10-33-23.png" /></a>  
   
