@@ -36,6 +36,14 @@ public class Bluetooth : AndroidBehaviour<Bluetooth>
     {
         instance.CallStatic("openBluetooth");
     }
+    
+    /// <summary>
+    /// Close
+    /// </summary>
+    public static void closeBt()
+    {
+        instance.CallStatic("CloseBt");
+    }
 
     /// <summary>
     /// 搜尋藍芽裝置
