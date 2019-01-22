@@ -21,6 +21,7 @@ public class MainActivity {
 	private static BluetoothSocket btSocket = null;
 	private static BluetoothDevice btdev = null;
 
+	private static boolean connectflag = false;
 	
 	public static void SetDevAddr(final String addr) {
 		FindDevAddr = addr;
@@ -48,6 +49,28 @@ public class MainActivity {
 
 	public static String GetPairName() {
 		return Search().getName();
+	}
+	
+	public static void CloseBt() {		
+		if (bluetoothAdapter.isEnabled()) {
+			bluetoothAdapter.disable();
+			
+			outStream = null;
+			btdev = null;
+			connectflag = false;
+			
+			try {
+				btSocket.close();
+				btSocket = null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static boolean ConectSuccess() {
+		return connectflag;
 	}
 
 	public static void openBluetooth() {
@@ -92,9 +115,11 @@ public class MainActivity {
 				
 				if (pairedDevices.size() > 0) 
 					for (BluetoothDevice device : pairedDevices) 
-						if (device.getName().equals(FindDevName) && device.getAddress().equals(FindDevAddr) ) 
+						if (device.getAddress().equals(FindDevAddr)) 
+						{
 							Toast.makeText(UnityPlayer.currentActivity, "Connect to" + device.getName() + " " + device.getAddress(), Toast.LENGTH_LONG).show();
-				
+							connectflag = true;
+						}				
 			}
 		});
 
@@ -115,7 +140,7 @@ public class MainActivity {
 	}
 
 	public static void ShowSend(final String info) {
-		Toast.makeText(UnityPlayer.currentActivity, info, Toast.LENGTH_LONG).show();
+		Toast.makeText(UnityPlayer.currentActivity, info, Toast.LENGTH_SHORT).show();
 	}
 
 	public static void Connect(final String btAddress) {
@@ -144,16 +169,6 @@ public class MainActivity {
 					outStream = btSocket.getOutputStream();
 				} catch (IOException e) {
 				}
-
-				// Test
-				String message = "q";
-				byte[] msgBuffer = message.getBytes();
-
-				try {
-					outStream.write(msgBuffer);
-				} catch (IOException e) {
-				}
-
 			}
 		});
 	}
