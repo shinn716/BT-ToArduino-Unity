@@ -1,4 +1,4 @@
-# BluetoothToArduino-Unity  
+# Bluetooth(BT)ToArduino-Unity  
   
 Previous..(Arduino code and Bt moudle, you can see from here.)  
 https://github.com/shinn716/BluetoothToArduino-Processing  
